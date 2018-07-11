@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="STDOUT"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>
+				%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	<!-- info log -->
+	<appender name="TEST_INFO_APPENDER"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>log/info-test.log</file>
+<!-- 		<filter class="ch.qos.logback.classic.filter.LevelFilter"> -->
+<!-- 		<level>info</level> -->
+<!-- 		<onMatch>ACCEPT</onMatch> -->
+<!-- 		<onMismatch>DENY</onMismatch> -->
+<!-- 		</filter> -->
+		<append>true</append>
+		<rollingPolicy
+			class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>log/info-test.%d{yyyy-MM-dd}.log
+			</fileNamePattern>
+			<maxHistory>15</maxHistory>
+		</rollingPolicy>
+		<encoder charset="UTF-8">
+			<pattern>%d{HH:mm:ss.SSS} - [%thread] %-5level -
+				%logger{35} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	<root>
+		<level value="debug" />
+		<appender-ref ref="STDOUT" />
+<!-- 		<appender-ref ref="TEST_INFO_APPENDER" /> -->
+	</root>
+
+</configuration>
