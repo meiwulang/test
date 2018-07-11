@@ -1,0 +1,9 @@
+    <gateway name="[customer_id]-gw1">
+      <param name="username" value="[username]"/>
+      <param name="password" value="[password]"/>
+      <param name="realm" value="[realm]"/>
+      <param name="register" value="[register]"/>
+      <param name="retry-seconds" value="60"/>
+      <param name="caller-id-in-from" value="true"/>
+      <param name="context" value="default"/>
+    </gateway>
