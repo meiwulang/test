@@ -1,4 +1,4 @@
-    <gateway name="[customer_id]-gw1">
+    <gateway name="[customer_id]-[id]">
       <param name="username" value="[username]"/>
       <param name="password" value="[password]"/>
       <param name="realm" value="[realm]"/>

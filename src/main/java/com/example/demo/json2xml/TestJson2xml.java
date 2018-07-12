@@ -18,7 +18,7 @@ import com.alibaba.fastjson.JSONObject;
 */
 public class TestJson2xml {
 	public static void main(String[] args) {
-		String info = "{\"version\":\"1.0\",\"command\":\"update_customer\",\"sequence\":56645,\"customer_id\":\"listen1\",\"agent_list\":[\"1008\"],\"caller_list\":[{\"id\":\"gw1\",\"number\":\"888\",\"sip_server\":\"10.250.250.155:5060\",\"sip_user_name\":\"admin\",\"sip_password\":\"admin\",\"sip_register\":0,\"capacity\":30,\"router\":\"\"}]}";
+		String info = "{\"version\":\"1.0\",\"command\":\"update_customer\",\"sequence\":56645,\"customer_id\":\"listen1\",\"agent_list\":[\"1008\"],\"caller_list\":[{\"id\":\"gw1\",\"number\":\"888\",\"sip_server\":\"10.250.250.155:5060\",\"sip_user_name\":\"admin\",\"sip_password\":\"admin\",\"sip_register\":0,\"capacity\":30,\"router\":\"\"},{\"id\":\"gw2\",\"number\":\"888\",\"sip_server\":\"10.250.250.155:5060\",\"sip_user_name\":\"admin\",\"sip_password\":\"admin\",\"sip_register\":0,\"capacity\":30,\"router\":\"\"}]}";
 		JSONObject jsonObject = JSONObject.parseObject(info);
 		createService(jsonObject);
 	}
@@ -50,7 +50,8 @@ public class TestJson2xml {
 		String result = "<include>\n";
 		List<Map<String, Object>> callerList = (List<Map<String, Object>>) jsonObject.get("caller_list");
 		for (Map<String, Object> map : callerList) {
-			result += item.replace("[customer_id]", customerId).replace("[username]", (String) map.get("sip_user_name"))
+			result += item.replace("[customer_id]", customerId).replace("[id]", (String) map.get("id"))
+			        .replace("[username]", (String) map.get("sip_user_name"))
 			        .replace("[password]", (String) map.get("sip_password"))
 			        .replace("[realm]", (String) map.get("sip_server"))
 			        .replace("[register]", (Integer) map.get("sip_register") == 1 ? "true" : "false");
